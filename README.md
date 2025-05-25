@@ -60,48 +60,53 @@ FW_Topology/
 
 ---
 
-# ☁️ AWS Terraform 구조 적용 (모듈화)
+## ☁️ AWS 적용 진행사항
 
-이 디렉토리는 기존 방화벽 토폴로지를 AWS 인프라로 확장하여 구성한 Terraform 기반 프로젝트입니다.
+기존 온프레미스 기반 방화벽 토폴로지를 AWS 인프라로 확장하여 Terraform 기반으로 자동화 구성하였습니다.
 
-## ✅ 적용 대상 컴포넌트
+### ✅ 주요 구성
 
-- **VPC**: 퍼블릭/프라이빗 서브넷, IGW, RT 구성
-- **EC2**: 서버 또는 보안 장비 역할 인스턴스 구성
-- **IAM**: 사용자/역할/정책의 모듈화된 권한 관리
-- **NAT**: 프라이빗 네트워크를 위한 NAT Gateway 구성
+- **VPC 모듈 구성**: CIDR 및 DNS 설정 포함
+- **EC2 인스턴스 모듈화**: firewall, server, pc 단위 분리 배포
+- **IAM 사용자 모듈화**: 단일 사용자 리소스 포함
+- **NAT Gateway 모듈화**: EIP 및 퍼블릭 서브넷 연계
+- **토폴로지 모듈화**: 방화벽, 서버, PC 리소스를 독립적으로 관리
+- **단일 Subnet/VPC 공유** 구조 (network 모듈에서 관리)
 
-## 🗂️ 디렉토리 구조
+---
+
+### 📦 디렉토리 구조
 
 ```
-FW_Topology/
-└── aws/
-    ├── modules/
-    │   ├── vpc/
-    │   ├── ec2/
-    │   ├── iam/
-    │   └── nat/
-    ├── main.tf
-    ├── variables.tf
-    ├── outputs.tf
-    └── README.md
+aws/
+├── main.tf                 # 전체 인프라 통합 구성
+├── terraform.tfvars        # 변수 정의 (현재 사용 안 함)
+├── deploy.ps1 / destroy.ps1 # 자동 배포 및 제거 스크립트
+├── modules/                # 재사용 가능한 공통 모듈
+│   └── vpc, ec2, iam, nat
+└── topology/               # 논리적 네트워크 토폴로지 단위
+    └── firewall, server, pc, network
 ```
 
-## 🚀 명령어 예시
+---
 
-```bash
+### 🚀 배포 명령어
+
+```powershell
+# 초기화 및 배포
+cd aws
 terraform init
-terraform plan
-terraform apply
+terraform apply -auto-approve
+
+# 제거
+terraform destroy -auto-approve
 ```
 
-## 🔐 보안 유의사항
+---
 
-- AWS credentials는 Git에 절대 커밋하지 않도록 `.gitignore` 사용
-- `.tfvars`, `.aws`, `*.pem` 등 민감 파일은 예외 처리
+### 🔐 향후 고려사항
 
-## 📌 향후 확장 계획
-
-- 모듈 재사용성 강화
-- GitHub Actions 기반 IaC 테스트 자동화
-
+- 보안 그룹 상세 정책 구성 (RDP/SSH/HTTP 제한)
+- 서브넷을 public/private 구간으로 나누어 라우팅 제어
+- EC2 → AWS WAF 또는 ALB로 확장 가능성 고려
+- GitHub Actions 연동하여 배포 자동화 예정
