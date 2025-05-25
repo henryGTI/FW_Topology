@@ -1,1 +1,6 @@
-﻿# Configuration for Server_3
+# Configuration for Server_3
+
+ip_address: 198.51.100.2
+subnet_mask: 255.255.255.0
+gateway: 198.51.100.1
+role: 보안 망 내부 전용 서버
