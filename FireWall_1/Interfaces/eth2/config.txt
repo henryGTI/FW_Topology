@@ -1,4 +1,5 @@
 # Configuration for eth2
+
 interface: eth2
 ip_address: 203.0.113.1
 subnet_mask: 255.255.255.248
