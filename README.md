@@ -35,13 +35,13 @@
 ```
 FW_Topology/
 ├── FireWall_1/
-│   ├── Interfaces/
+│   └── Interfaces/
 │      ├── eth1/
 │      ├── eth2/
 │      └── eth3/
 │   
 ├── FireWall_2/
-│   ├── Interfaces/
+│   └── Interfaces/
 │   
 ├── Server_1/
 ├── Server_2/
