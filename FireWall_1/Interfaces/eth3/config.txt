@@ -1,1 +1,7 @@
-﻿# Configuration for eth3
+# Configuration for eth3
+interface: eth3
+ip_address: 10.10.10.1
+subnet_mask: 255.255.255.192
+zone: user
+connected_device: PC
+description: 사용자 단말 접속 포트
