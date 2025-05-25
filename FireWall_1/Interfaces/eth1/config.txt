@@ -1,1 +1,8 @@
-﻿# Configuration for eth1
+# Configuration for eth1
+
+interface: eth1
+ip_address: 100.100.100.1
+subnet_mask: 255.255.255.252
+zone: internal
+connected_device: Server_1
+description: 내부 서버 연결용 포트
