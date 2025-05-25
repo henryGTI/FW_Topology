@@ -1,1 +1,8 @@
-﻿# Configuration for Server_2
+# Configuration for Server_2
+
+ip_address: 203.0.113.2
+subnet_mask: 255.255.255.248
+gateway: 203.0.113.1
+role: Database Server
+rdp_port: 3389
+firewall_note: 방화벽에서 접근 제어 필요
