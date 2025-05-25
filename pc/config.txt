@@ -1,1 +1,7 @@
-﻿# Configuration for pc
+# Configuration for PC
+
+ip_address: 10.10.10.2
+subnet_mask: 255.255.255.192
+gateway: 10.10.10.1
+role: 내부 사용자 단말
+rdp_client: true
