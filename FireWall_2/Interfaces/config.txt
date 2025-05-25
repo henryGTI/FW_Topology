@@ -1,1 +1,8 @@
-﻿# Configuration for Interfaces
+# Configuration for isolated interface
+
+interface: eth0
+ip_address: 198.51.100.1
+subnet_mask: 255.255.255.0
+zone: isolated
+connected_device: Server_3
+description: 격리망 구성용 포트
