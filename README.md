@@ -36,13 +36,13 @@
 FW_Topology/
 ├── FireWall_1/
 │   ├── Interfaces/
-│   │   ├── eth1/
-│   │   ├── eth2/
-│   │   └── eth3/
-│   └── Server/
+│      ├── eth1/
+│      ├── eth2/
+│      └── eth3/
+│   
 ├── FireWall_2/
 │   ├── Interfaces/
-│   └── Server/
+│   
 ├── Server_1/
 ├── Server_2/
 ├── Server_3/
