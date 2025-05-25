@@ -1,1 +1,7 @@
-﻿# Configuration for eth2
+# Configuration for eth2
+interface: eth2
+ip_address: 203.0.113.1
+subnet_mask: 255.255.255.248
+zone: dmz
+connected_device: Server_2
+description: DMZ 구간 서버 연결 포트
